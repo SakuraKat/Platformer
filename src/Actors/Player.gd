@@ -4,15 +4,14 @@ extends Actor
 export var stomp_impulse: = 600.0
 
 
-func _on_EnemyDetector_area_entered(area: Area2D) -> void:
+func _on_EnemyDetector_area_entered(_area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
 
-func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
-	queue_free()
+func _on_EnemyDetector_body_entered(_body: PhysicsBody2D) -> void:
+	die()
 
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
@@ -44,3 +43,7 @@ func calculate_move_velocity(
 func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) -> Vector2:
 	var stomp_jump: = -speed.y if Input.is_action_pressed("jump") else -stomp_impulse
 	return Vector2(linear_velocity.x, stomp_jump)
+
+func die() -> void:
+	PlayerData.deaths += 1
+	queue_free()

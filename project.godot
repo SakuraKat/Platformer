@@ -27,13 +27,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Your First Platformer (2): Level Design"
-run/main_scene="res://src/Levels/Level01.tscn"
+run/main_scene="res://src/UI/Screens/MainScreen.tscn"
 config/icon="res://assets/icon.png"
+
+[autoload]
+
+PlayerData="*res://src/AutoLoad/PlayerData.tscn"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/size/always_on_top=true
 window/size/test_width=1280
 window/size/test_height=720
