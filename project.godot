@@ -26,9 +26,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Your First Platformer (2): Level Design"
+config/name="Platformer"
 run/main_scene="res://src/UI/Screens/MainScreen.tscn"
-config/icon="res://assets/icon.png"
+config/icon="res://icon.png"
 
 [autoload]
 
